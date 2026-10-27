@@ -1,0 +1,541 @@
+/* Panel: Scale With Screen Size, reference 1920x1080, match height (HUDPanelSettings). All sizes below are in reference pixels.
+   Layout: #root is a flex column (top-bar / middle / bottom-bar); only full-screen overlays and the crosshair are absolutely positioned. */
+
+#root {
+    --c-text: rgb(224, 220, 210);
+    --c-text-dim: rgba(224, 220, 210, 0.55);
+    --c-panel: rgba(10, 10, 12, 0.7);
+    --c-border: rgba(224, 220, 210, 0.15);
+    --c-brand: rgb(220, 47, 41);
+    --c-brand-dark: rgba(60, 10, 12, 0.6);
+    --c-warn: rgb(230, 200, 80);
+    --c-heart-empty: rgb(70, 70, 74);
+    --fs-s: 18px;
+    --fs-m: 24px;
+    --fs-l: 32px;
+    --fs-title: 120px;
+    --gap: 12px;
+    --pad: 24px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    padding: var(--pad);
+    -unity-font-definition: url("Fonts/Cinzel.ttf");
+    color: var(--c-text);
+    font-size: var(--fs-m);
+}
+
+Label {
+    color: var(--c-text);
+}
+
+.dim {
+    color: var(--c-text-dim);
+    font-size: var(--fs-s);
+    letter-spacing: 3px;
+}
+
+.panel {
+    padding: var(--gap) var(--pad);
+    background-color: var(--c-panel);
+    border-width: 1px;
+    border-color: var(--c-border);
+    border-radius: 3px;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.bar {
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-width: 1px;
+    border-color: rgba(224, 220, 210, 0.25);
+}
+
+.fill {
+    height: 100%;
+}
+
+/* Top: status left, key + cheat tags right */
+#top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#level {
+    font-size: var(--fs-l);
+    -unity-font-style: bold;
+}
+
+#lives {
+    flex-direction: row;
+    margin: var(--gap) 0 6px 0;
+}
+
+.heart {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    background-image: url("Icons/Icon_Heart.png");
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--c-heart-empty);
+}
+
+.heart.full {
+    -unity-background-image-tint-color: rgb(200, 40, 40);
+}
+
+#top-right {
+    align-items: flex-end;
+}
+
+#cheats {
+    align-items: flex-end;
+    margin-top: var(--gap);
+}
+
+.cheat {
+    margin-bottom: 6px;
+    padding: 3px 12px;
+    font-size: var(--fs-s);
+    -unity-font-style: bold;
+    color: var(--c-warn);
+    background-color: var(--c-panel);
+    border-width: 1px;
+    border-color: var(--c-warn);
+}
+
+/* Middle: messages in the upper half, interaction prompt in the lower half, crosshair at the exact centre */
+#middle {
+    flex-grow: 1;
+}
+
+#message-area,
+#prompt-area {
+    flex-grow: 1;
+    flex-basis: 0;
+    align-items: center;
+}
+
+#message-area {
+    justify-content: center;
+}
+
+#prompt-area {
+    justify-content: flex-start;
+    padding-top: 60px;
+}
+
+#message {
+    padding: var(--gap) var(--pad);
+    font-size: var(--fs-l);
+    background-color: var(--c-panel);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#message.visible {
+    opacity: 1;
+}
+
+#crosshair {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    border-radius: 3px;
+    background-color: rgba(224, 220, 210, 0.6);
+}
+
+/* Bottom: vitals left, hotbar centre, equal-width spacer right keeps the hotbar centred */
+#bottom-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.bottom-side {
+    width: 360px;
+}
+
+.vital-label {
+    margin: var(--gap) 0 6px 0;
+}
+
+#battery-fill {
+    background-color: rgba(230, 200, 80, 0.9);
+}
+
+#battery-fill.low {
+    background-color: var(--c-brand);
+}
+
+#stamina-fill {
+    background-color: rgba(150, 175, 200, 0.85);
+}
+
+#hotbar-area {
+    align-items: center;
+}
+
+#hotbar {
+    flex-direction: row;
+}
+
+.slot {
+    width: 140px;
+    height: 120px;
+    margin: 0 6px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--c-panel);
+    border-width: 2px;
+    border-color: var(--c-border);
+    border-radius: 6px;
+}
+
+.slot.empty #icon {
+    opacity: 0.25;
+}
+
+.slot.empty #count {
+    opacity: 0.4;
+}
+
+.slot.selected {
+    border-color: var(--c-brand);
+    background-color: rgba(50, 14, 14, 0.75);
+}
+
+#icon {
+    width: 60px;
+    height: 60px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+#label {
+    margin-top: 6px;
+    font-size: var(--fs-s);
+    color: rgba(224, 220, 210, 0.8);
+}
+
+#number {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    font-size: var(--fs-s);
+    color: rgba(224, 220, 210, 0.45);
+}
+
+#count {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    font-size: var(--fs-m);
+    -unity-font-style: bold;
+}
+
+.hint {
+    margin-top: 8px;
+    font-size: var(--fs-s);
+    color: rgba(224, 220, 210, 0.4);
+}
+
+/* Black screen after being caught and between levels (opacity set by HUD.cs) */
+#fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+}
+
+/* Menu, pause, reward and game over screens: full-screen, content in a left-aligned column over a dark gradient */
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+}
+
+.screen {
+    background-color: rgb(5, 4, 6);
+    background-image: url("MenuBackground.png");
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.shade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: url("Vignette.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.screen-content {
+    width: 1000px;
+    margin-left: 160px;
+}
+
+.title {
+    font-size: var(--fs-title);
+    letter-spacing: 14px;
+    color: rgb(232, 226, 214);
+    text-shadow: 0 0 28px rgba(220, 47, 41, 0.85);
+}
+
+.title.danger {
+    font-size: 84px;
+    color: var(--c-brand);
+    text-shadow: 0 0 24px rgba(0, 0, 0, 0.9);
+}
+
+.tagline {
+    margin-top: var(--gap);
+    font-size: var(--fs-m);
+    letter-spacing: 3px;
+    color: var(--c-text-dim);
+}
+
+.menu-buttons {
+    margin-top: 56px;
+}
+
+/* Menu and pause: buttons on the left, the open settings or controls panel beside them (never below, so nothing runs off the screen) */
+.menu-row {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.side-panel {
+    margin-top: 56px;
+    margin-left: 60px;
+}
+
+.best-line {
+    margin-top: var(--pad);
+    letter-spacing: 6px;
+}
+
+.overlay Button {
+    width: 380px;
+    height: 64px;
+    margin: 0 0 var(--gap) 0;
+    padding: 0 0 0 28px;
+    font-size: var(--fs-m);
+    letter-spacing: 8px;
+    -unity-text-align: middle-left;
+    color: var(--c-text-dim);
+    background-color: rgba(0, 0, 0, 0.35);
+    border-width: 0 0 0 3px;
+    border-color: rgba(224, 220, 210, 0.2);
+    border-radius: 0;
+    transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+}
+
+.overlay Button.primary {
+    color: var(--c-text);
+    border-color: var(--c-brand);
+    background-color: var(--c-brand-dark);
+}
+
+.overlay Button:hover,
+.overlay Button:focus {
+    border-color: var(--c-brand);
+    color: rgb(255, 255, 255);
+    background-color: rgba(220, 47, 41, 0.3);
+}
+
+/* Controls list, toggled by the CONTROLS button */
+#controls {
+    display: none;
+    width: 520px;
+    padding: var(--pad);
+}
+
+#controls.open {
+    display: flex;
+}
+
+.controls-row {
+    flex-direction: row;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.controls-row Label {
+    font-size: var(--fs-s);
+    color: rgba(224, 220, 210, 0.75);
+}
+
+.keycap {
+    width: 120px;
+    margin-right: var(--pad);
+    color: var(--c-text);
+    -unity-text-align: middle-left;
+    letter-spacing: 2px;
+}
+
+.controls-tip {
+    margin-top: var(--gap);
+    font-size: var(--fs-s);
+    color: var(--c-brand);
+}
+
+/* Studio mark, bottom centre of every menu screen */
+.studio-mark {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.studio-logo {
+    width: 96px;
+    height: 96px;
+    margin-right: 20px;
+    background-image: url("Branding/RedSkia_Logo.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.studio-wordmark {
+    width: 316px;
+    height: 48px;
+    background-image: url("Branding/RedSkia_Header.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* Game over stats: tidy two-column table */
+#gameover-stats {
+    width: 520px;
+    margin-top: var(--pad);
+}
+
+.stat-row {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-top-width: 1px;
+    border-color: var(--c-border);
+}
+
+
+.stat-name {
+    font-size: var(--fs-s);
+    letter-spacing: 3px;
+    color: var(--c-text-dim);
+}
+
+.stat-value {
+    font-size: var(--fs-m);
+    color: var(--c-text);
+}
+
+
+/* Full map (M) */
+#bigmap {
+    display: none;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+#bigmap-panel {
+    width: 760px;
+    height: 720px;
+    margin-bottom: 110px;   /* clear of the hotbar */
+}
+
+.map {
+    flex-grow: 1;
+}
+
+/* Reward choice after an escape */
+#reward-buttons Button {
+    width: 520px;
+}
+
+.overlay Button:disabled {
+    opacity: 0.3;
+}
+
+#settings {
+    display: none;
+    width: 520px;
+    padding: var(--pad);
+}
+
+#settings.open {
+    display: flex;
+}
+
+/* Hold-E progress bar under the interaction prompt (width set by HUD.cs) */
+#hold {
+    display: none;
+    width: 220px;
+    height: 8px;
+    margin-top: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#hold-fill {
+    height: 100%;
+    width: 0;
+    background-color: rgb(224, 220, 210);
+}
+
+/* Settings sliders: label + value on one line, slider full width below */
+.slider-row {
+    flex-direction: column;
+    margin: 4px 0;
+}
+.slider-head { flex-direction: row; justify-content: space-between; align-items: center; height: 32px; margin: 0 10px; }
+.slider-label { font-size: var(--fs-m); margin: 0; padding: 0; height: 32px; -unity-text-align: middle-left; }
+.slider-value { font-size: var(--fs-m); margin: 0; padding: 0; height: 32px; -unity-text-align: middle-right; color: var(--c-text-dim); }
+.slider-row Slider { margin: 0 10px 4px 10px; height: 24px; }
+.slider-row #unity-drag-container { height: 24px; justify-content: center; }
+.slider-row #unity-tracker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 9px;
+    height: 6px;
+    margin: 0;
+    background-color: var(--c-brand-dark);
+    border-width: 0;
+}
+.slider-row #unity-dragger {
+    position: absolute;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border-radius: 10px;
+    border-width: 0;
+    background-color: var(--c-text);
+}
+.slider-row #unity-dragger-border { display: none; }
+.slider-row Slider:focus #unity-dragger,
+.slider-row #unity-dragger:hover { background-color: var(--c-brand); }

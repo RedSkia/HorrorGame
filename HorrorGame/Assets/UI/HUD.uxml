@@ -1,0 +1,157 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="HUD.uss" />
+    <ui:VisualElement name="root" picking-mode="Ignore">
+        <ui:VisualElement name="top-bar" picking-mode="Ignore">
+            <ui:VisualElement name="status" class="panel" picking-mode="Ignore">
+                <ui:Label name="level" text="LEVEL 1" picking-mode="Ignore" />
+                <ui:VisualElement name="lives" picking-mode="Ignore" />
+                <ui:Label name="best" text="Best: 0" class="dim" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="top-right" picking-mode="Ignore">
+                <ui:VisualElement name="cheats" picking-mode="Ignore">
+                    <ui:Label name="cheat-god" text="GOD MODE" class="cheat" picking-mode="Ignore" />
+                    <ui:Label name="cheat-fullbright" text="FULLBRIGHT" class="cheat" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="middle" picking-mode="Ignore">
+            <ui:VisualElement name="message-area" picking-mode="Ignore">
+                <ui:Label name="message" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="prompt-area" picking-mode="Ignore">
+                <ui:Label name="prompt" class="panel" picking-mode="Ignore" />
+                <ui:VisualElement name="hold" picking-mode="Ignore"><ui:VisualElement name="hold-fill" picking-mode="Ignore" /></ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="bottom-bar" picking-mode="Ignore">
+            <ui:VisualElement name="vitals" class="panel bottom-side" picking-mode="Ignore">
+                <ui:VisualElement class="row" picking-mode="Ignore">
+                    <ui:Label text="BATTERY" class="dim" picking-mode="Ignore" />
+                    <ui:Label name="battery-percent" text="100%" class="dim" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement name="battery-bar" class="bar" picking-mode="Ignore">
+                    <ui:VisualElement name="battery-fill" class="fill" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:Label text="STAMINA" class="dim vital-label" picking-mode="Ignore" />
+                <ui:VisualElement name="stamina-bar" class="bar" picking-mode="Ignore">
+                    <ui:VisualElement name="stamina-fill" class="fill" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="hotbar-area" picking-mode="Ignore">
+                <ui:VisualElement name="hotbar" picking-mode="Ignore" />
+                <ui:Label text="1-4 select   ·   R use" class="hint" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement class="bottom-side" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="crosshair" picking-mode="Ignore" />
+
+        <ui:VisualElement name="bigmap" class="overlay" picking-mode="Ignore">
+            <ui:VisualElement name="bigmap-panel" class="panel" picking-mode="Ignore">
+                <ui:Label text="MAP  [M]" class="dim" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="fade" picking-mode="Ignore" />
+
+        <ui:VisualElement name="menu" class="overlay screen">
+            <ui:VisualElement class="shade" picking-mode="Ignore" />
+            <ui:VisualElement class="screen-content">
+                <ui:Label name="menu-title" text="HORROR MAZE" class="title" />
+                <ui:Label text="Find the key. Reach the door. Stay out of the light." class="tagline" />
+                <ui:VisualElement class="menu-row">
+                    <ui:VisualElement class="menu-buttons">
+                        <ui:Button name="play" text="PLAY" class="primary" />
+                        <ui:Button name="controls-toggle" text="CONTROLS" />
+                        <ui:Button name="settings-toggle" text="SETTINGS" />
+                        <ui:Button name="menu-quit" text="QUIT" />
+                        <ui:Label name="menu-best" class="dim best-line" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="menu-side" class="side-panel">
+                        <ui:VisualElement name="settings" class="panel">
+                            <ui:Button name="headbob-toggle" text="HEAD BOB: ON" />
+                            <ui:VisualElement class="slider-row"><ui:VisualElement class="slider-head"><ui:Label text="MOUSE SENSITIVITY" class="slider-label" /><ui:Label name="sensitivity-value" class="slider-value" /></ui:VisualElement><ui:Slider name="sensitivity" low-value="0.2" high-value="10" /></ui:VisualElement>
+                            <ui:VisualElement class="slider-row"><ui:VisualElement class="slider-head"><ui:Label text="FIELD OF VIEW" class="slider-label" /><ui:Label name="fov-value" class="slider-value" /></ui:VisualElement><ui:Slider name="fov" low-value="60" high-value="100" /></ui:VisualElement>
+                            <ui:VisualElement class="slider-row"><ui:VisualElement class="slider-head"><ui:Label text="VOLUME" class="slider-label" /><ui:Label name="volume-value" class="slider-value" /></ui:VisualElement><ui:Slider name="volume" low-value="0" high-value="1" /></ui:VisualElement>
+                            <ui:Button name="settings-reset" text="RESET TO DEFAULT" />
+                            <ui:Button name="settings-back" text="BACK" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="controls" class="panel">
+                            <ui:VisualElement class="controls-row"><ui:Label text="WASD" class="keycap" /><ui:Label text="Move" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="SHIFT" class="keycap" /><ui:Label text="Sprint" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="F / LMB" class="keycap" /><ui:Label text="Flashlight" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="E" class="keycap" /><ui:Label text="Open / hide / escape" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="1-4  R" class="keycap" /><ui:Label text="Select / use item" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="M" class="keycap" /><ui:Label text="Map" /></ui:VisualElement>
+                            <ui:VisualElement class="controls-row"><ui:Label text="ESC" class="keycap" /><ui:Label text="Pause" /></ui:VisualElement>
+                            <ui:Label text="The monsters see your light. Darkness hides you." class="controls-tip" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="studio-mark" picking-mode="Ignore">
+                <ui:VisualElement class="studio-logo" picking-mode="Ignore" />
+                <ui:VisualElement class="studio-wordmark" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="pause" class="overlay screen">
+            <ui:VisualElement class="shade" picking-mode="Ignore" />
+            <ui:VisualElement name="pause-content" class="screen-content">
+                <ui:Label text="PAUSED" class="title" />
+                <ui:VisualElement class="menu-row">
+                    <ui:VisualElement class="menu-buttons">
+                        <ui:Button name="resume" text="RESUME" class="primary" />
+                        <ui:Button name="pause-controls" text="CONTROLS" />
+                        <ui:Button name="pause-settings" text="SETTINGS" />
+                        <ui:Button name="pause-menu" text="EXIT TO MENU" />
+                        <ui:Button name="pause-quit" text="QUIT" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="pause-side" class="side-panel" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="studio-mark" picking-mode="Ignore">
+                <ui:VisualElement class="studio-logo" picking-mode="Ignore" />
+                <ui:VisualElement class="studio-wordmark" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="reward" class="overlay screen">
+            <ui:VisualElement class="shade" picking-mode="Ignore" />
+            <ui:VisualElement class="screen-content">
+                <ui:Label text="YOU ESCAPED" class="title" />
+                <ui:Label text="Choose your reward" class="tagline" />
+                <ui:VisualElement name="reward-buttons" class="menu-buttons">
+                    <ui:Button name="reward-life" text="+1 LIFE" />
+                    <ui:Button name="reward-meat" text="+1 MEAT" />
+                    <ui:Button name="reward-battery" text="+1 BATTERY" />
+                    <ui:Button name="reward-shortcut" text="+1 SHORTCUT KEY" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="studio-mark" picking-mode="Ignore">
+                <ui:VisualElement class="studio-logo" picking-mode="Ignore" />
+                <ui:VisualElement class="studio-wordmark" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="gameover" class="overlay screen">
+            <ui:VisualElement class="shade" picking-mode="Ignore" />
+            <ui:VisualElement class="screen-content">
+                <ui:Label text="YOU WERE CAUGHT" class="title danger" />
+                <ui:Label name="gameover-text" class="tagline" />
+                <ui:VisualElement name="gameover-stats" class="panel" />
+                <ui:VisualElement class="menu-buttons">
+                    <ui:Button name="retry" text="TRY AGAIN" class="primary" />
+                    <ui:Button name="gameover-quit" text="QUIT" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="studio-mark" picking-mode="Ignore">
+                <ui:VisualElement class="studio-logo" picking-mode="Ignore" />
+                <ui:VisualElement class="studio-wordmark" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

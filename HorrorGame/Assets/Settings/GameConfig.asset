@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a03ea2acb1980428c3ed0c27b2806c, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: Assembly-CSharp::GameConfig
+  startMazeSize: 6
+  cellsPerRoom: 3
+  maxRooms: 3
+  braidChance: 0.3
+  maxLives: 3
+  monsterCount: 1
+  levelsPerExtraMonster: 3
+  maxMonsters: 4
+  minMonsterDistance: 4
+  monsterTypes:
+  - config: {fileID: 11400000, guid: 302c7c32e792cc642baf5325533142ea, type: 2}
+    minLevel: 1
+    weight: 3
+  - config: {fileID: 11400000, guid: a6f69f3a993988e459ccc6ca4d2303ab, type: 2}
+    minLevel: 2
+    weight: 1.5
+  - config: {fileID: 11400000, guid: bb0284ffcef8c1746a4ca0831732dcda, type: 2}
+    minLevel: 3
+    weight: 1.5
+  chestsPerCell: 0.1
+  minChests: 6
+  maxChests: 24
+  lockersPerCell: 0.06
+  minLockers: 4
+  maxLockers: 16
+  shortcutsPerCell: 0.017
+  minShortcuts: 1
+  maxShortcuts: 5
+  normalChestWeight: 10
+  rareChestWeight: 1.5
+  trappedChestWeight: 2
+  loot:
+    entries:
+    - item: {fileID: 11400000, guid: db52dadd35dd7c045881df382feeac7b, type: 2}
+      count: 1
+      percent: 47
+    - item: {fileID: 11400000, guid: 5c3b4c81a46283e47bcb56c7ee951f26, type: 2}
+      count: 1
+      percent: 37
+    - item: {fileID: 11400000, guid: f3416a0874240aa4b93305605cbbeaf2, type: 2}
+      count: 1
+      percent: 16
+  rareLoot:
+    entries:
+    - item: {fileID: 11400000, guid: db52dadd35dd7c045881df382feeac7b, type: 2}
+      count: 2
+      percent: 50
+    - item: {fileID: 11400000, guid: 5c3b4c81a46283e47bcb56c7ee951f26, type: 2}
+      count: 3
+      percent: 20
+    - item: {fileID: 11400000, guid: 71d7d26d33b61f44d86f31a158c2d3f7, type: 2}
+      count: 1
+      percent: 20
+    - item: {fileID: 11400000, guid: f3416a0874240aa4b93305605cbbeaf2, type: 2}
+      count: 1
+      percent: 10

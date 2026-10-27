@@ -1,0 +1,16 @@
+# Serves the Unity web build (HorrorGame/Builds/Web) read-only on port 8080 for this PC and the local network
+# (http://localhost:8080, http://<pc-name>:8080, http://<lan-ip>:8080).
+# Easiest: build.cmd (fresh build + serve). Manually: build into HorrorGame/Builds/Web, then docker compose up -d
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./HorrorGame/Builds/Web:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    restart: unless-stopped

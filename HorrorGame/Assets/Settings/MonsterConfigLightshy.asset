@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b029af8209d3e6343a2e9d4cb30142db, type: 3}
+  m_Name: MonsterConfigLightshy
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterConfig
+  walkSpeed: 1.8
+  runSpeed: 3.8
+  sightRangeDark: 5
+  sightRangeLit: 9
+  glowRange: 6
+  noiseRange: 8
+  noiseRadiusScale: 1
+  touchRange: 0
+  fearsLight: 1
+  tint: {r: 0.8, g: 1, b: 0.5, a: 1}
+  emission: {r: 0.12, g: 0.3, b: 0.04, a: 1}
+  eatSeconds: 5
+  attackRange: 1.2
+  searchDuration: 5
+  investigateDuration: 4
