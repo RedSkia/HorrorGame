@@ -1,3 +1,49 @@
+# ===== OS =====
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ===== Editors / IDE =====
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# ===== Temp, logs, dumps, archives =====
+*.log
+*.tmp
+*.bak
+*.dmp
+*.zip
+*.7z
+*.rar
+
+# ===== Office lock/temp files =====
+~$*
+~WRL*.tmp
+
+# ===== Claude Code local state =====
+.claude/worktrees/
+.claude/settings.local.json
+
+# ===== Secrets / keys =====
+.env
+.env.*
+!.env.example
+*.pem
+*.pfx
+*.p12
+*.key
+
+# ===== Project specific =====
 # Based on https://github.com/github/gitignore/blob/main/Unity.gitignore
 # Adapted for the repo root: the Unity project sits in a subfolder, so the
 # template's root-anchored "/..." rules are written unanchored or with "**/".
@@ -10,7 +56,6 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-*.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
 *.blend1
@@ -32,7 +77,6 @@
 *.DotSettings.user
 
 # Visual Studio cache directory
-.vs/
 
 # Gradle cache directory
 .gradle/
@@ -45,7 +89,6 @@ ExportedObj/
 *.sln
 *.slnx
 *.suo
-*.tmp
 *.user
 *.userprefs
 *.pidb
@@ -106,10 +149,7 @@ InitTestScene*.unity*
 **/[Aa]ssets/[Ss]ceneDependencyCache*
 
 # Editor / OS (from GitHub's Global templates)
-.idea/
 .vscode/
-.DS_Store
-Thumbs.db
 Desktop.ini
 
 # Unity crash recovery scenes
